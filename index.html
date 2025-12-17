@@ -1,199 +1,360 @@
 
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jury Experience – Einladung</title>
+  <title>Geschworenengericht Mettenheim – Jury Eignungscheck (Wizard)</title>
+  <meta name="description" content="Witziger Auswahlprozess: 10 Fragen im Schritt-für-Schritt-Modus mit Zustimmungsoptionen und humorvollem Ton." />
   <style>
-    :root {
-      --bg: #0b0f1a;
-      --card: #131a2a;
-      --accent: #ffd166;
-      --accent2: #ef476f;
-      --text: #e9edf5;
-      --muted: #9aa8bd;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(1200px 800px at 20% 0%, #0f1430, var(--bg));
-      color: var(--text); min-height: 100vh; display: grid; place-items: center; padding: 24px;
-    }
-    .container { max-width: 720px; width: 100%; }
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02) 40%), var(--card);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px; padding: 28px; box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      backdrop-filter: blur(8px);
-    }
-    h1 { font-size: 1.9rem; margin: 0 0 6px; letter-spacing: 0.5px; }
-    .subtitle { color: var(--muted); margin-bottom: 18px; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255, 209, 102, 0.12); color: var(--accent);
-      border: 1px solid rgba(255, 209, 102, 0.28);
-      padding: 8px 12px; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
-      margin-bottom: 14px;
-    }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-    .riddle {
-      background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.14);
-      border-radius: 12px; padding: 16px; line-height: 1.55;
-    }
-    .clue { color: var(--muted); font-size: 0.98rem; }
-    .inputRow { display: flex; gap: 10px; margin-top: 12px; }
-    input[type=text] {
-      flex: 1; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06); color: var(--text);
-      outline: none;
-    }
-    button {
-      padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.18);
-      background: linear-gradient(180deg, #ffd166, #fcbf49); color: #1a1a1a; font-weight: 700;
-      cursor: pointer;
-    }
-    button.secondary { background: rgba(255,255,255,0.08); color: var(--text); }
-    .status { margin-top: 10px; font-weight: 600; }
-    .hint { color: var(--accent2); }
-    .success {
-      display: none; margin-top: 18px; padding: 16px; border-radius: 12px;
-      background: rgba(76, 201, 91, 0.12); border: 1px solid rgba(76, 201, 91, 0.35);
-    }
-    .footer { margin-top: 20px; color: var(--muted); font-size: 0.92rem; }
-    .logo {
-      width: 64px; height: 64px; border-radius: 14px; display: grid; place-items: center;
-      background: radial-gradient(120px 80px at 50% 20%, rgba(255, 209, 102, 0.18), rgba(255, 255, 255, 0.06));
-      border: 1px solid rgba(255,255,255,0.12); margin-bottom: 12px;
-    }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
-    .small { font-size: 0.9rem; }
+    :root { --bg:#0b0f1a; --card:#121833; --ink:#e9edf5; --muted:#cbd5e1; --line:#1f2742; --accent:#ffd166; --accent2:#0ea5e9; --ok:#06d6a0; --warn:#ef476f; }
+    *{box-sizing:border-box}
+    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background: radial-gradient(1200px 800px at 20% 0%, #0f1430, var(--bg)); color: var(--ink);
+      min-height:100vh; display:grid; place-items:center; padding:24px}
+    .container{max-width:820px; width:100%}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02) 40%), var(--card);
+      border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:26px; box-shadow:0 22px 60px rgba(0,0,0,.35)}
+    .logo{width:64px; height:64px; border-radius:14px; display:grid; place-items:center; background:radial-gradient(120px 80px at 50% 20%, rgba(255,209,102,.18), rgba(255,255,255,.06)); border:1px solid rgba(255,255,255,.12); margin-bottom:12px}
+    h1{margin:0 0 8px; font-size:1.9rem}
+    .subtitle{color:var(--muted); margin-bottom:18px}
+    .badge{display:inline-flex; align-items:center; gap:8px; background:rgba(255,209,102,.12); color:var(--accent);
+      border:1px solid rgba(255,209,102,.28); padding:8px 12px; border-radius:999px; font-weight:700; font-size:.9rem; margin-bottom:14px}
+    .progressWrap{margin:8px 0 16px}
+    .progress{height:10px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:999px; overflow:hidden}
+    .bar{height:100%; width:0%; background:linear-gradient(90deg, #ffd166, #0ea5e9)}
+    .steps{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+    .chip{padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.18); color:var(--muted); font-weight:700; font-size:.82rem}
+    .chip.active{color:#1a1a1a; background:#ffd166; border-color:#ffd166}
+    .chip.done{color:#1a1a1a; background:#0ea5e9; border-color:#0ea5e9}
+
+    /* Wizard panel */
+    .panel{min-height:260px; display:none}
+    .panel.active{display:block}
+    fieldset{border:1px dashed rgba(255,255,255,.18); border-radius:12px; padding:14px; margin:0}
+    legend{padding:0 8px; color:var(--muted)}
+    .q{margin:0 8px 10px 0}
+    .options{display:grid; grid-template-columns:repeat(3, minmax(140px, 1fr)); gap:10px}
+    label.opt{display:flex; align-items:center; gap:8px; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06); cursor:pointer}
+    input[type=radio]{accent-color:#ffd166}
+    @media (max-width:640px){ .options{grid-template-columns:1fr} }
+
+    .nav{display:flex; justify-content:space-between; gap:10px; margin-top:16px}
+    .nav .spacer{flex:1}
+    button{padding:12px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(180deg, #ffd166, #fcbf49); color:#1a1a1a; font-weight:800; cursor:pointer}
+    button.secondary{background:rgba(255,255,255,.08); color:var(--ink)}
+    button:disabled{opacity:.6; cursor:not-allowed}
+
+    .status{margin-top:10px; font-weight:700}
+    .result{display:none; margin-top:16px; padding:16px; border-radius:12px; background:rgba(6,214,160,.12); border:1px solid rgba(6,214,160,.35)}
+    .result.bad{background:rgba(239,71,111,.12); border-color:rgba(239,71,111,.35)}
+    .score{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace}
+    .footer{margin-top:16px; color:var(--muted); font-size:.92rem}
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
+  <main class="container">
+    <section class="card" aria-labelledby="title">
       <div class="logo" aria-hidden="true">⚖️</div>
       <div class="badge">Vorladung – Nur für die Jury</div>
-      <h1>Die erste Prüfung deiner Urteilskraft</h1>
-      <div class="subtitle">Löse das Rätsel, um deine geheime Einladung zu entschlüsseln.</div>
+      <h1 id="title">Jury‑Eignungscheck</h1>
+      <p class="subtitle">10 Aussagen, jeweils mit <strong>„Ich stimme zu / Neutral / Ich stimme nicht zu“</strong></p>
 
-      <div class="grid">
-        <div class="riddle">
-          <p><strong>Rätsel:</strong> Der Schlüssel ist ein Wort mit <em>10 Buchstaben</em>. Es setzt sich aus drei Teilen zusammen:</p>
-          <ol>
-            <li><strong>Teil A:</strong> Das Gegenteil von „Schuldig“. (6 Buchstaben)</li>
-            <li><strong>Teil B:</strong> Der Anfangsbuchstabe des Alphabets. (1 Zeichen)</li>
-            <li><strong>Teil C:</strong> Das englische Wort für „Erlebnis“. (3 Buchstaben)</li>
-          </ol>
-          <p class="clue">Tipp: Schreibe alles zusammen, ohne Leerzeichen. Umlaute als normale Buchstaben (ä → a, ö → o, ü → u).</p>
+      <!-- Fortschritt -->
+      <div class="progressWrap" aria-hidden="false" aria-label="Fortschritt">
+        <div class="progress"><div id="bar" class="bar"></div></div>
+        <div id="steps" class="steps" aria-label="Schritte"></div>
+      </div>
 
-          <div class="inputRow">
-            <input id="answer" type="text" placeholder="Deine Lösung hier eingeben" aria-label="Lösung eingeben" />
-            <button id="checkBtn" aria-label="Lösung prüfen">Prüfen</button>
-            <button id="hintBtn" class="secondary" aria-label="Hinweis anzeigen">Hinweis</button>
-          </div>
-          <div id="status" class="status" role="status" aria-live="polite"></div>
-
-          <div id="success" class="success">
-            <h2>🎉 Geschafft!</h2>
-            <p>
-              Du hast die geheime Einladung freigeschaltet: <strong>JURYEXPERIENCE</strong>.
-            </p>
-            <p>
-              Halte dich bereit – deine <em>Jury Experience</em> wartet. Die genauen Details bekommst du mit deinem Gutschein.
-            </p>
-            <p class="small mono">Code: JURY-INVITE-2025</p>
-          </div>
+      <!-- Panels / Questions -->
+      <form id="quiz" novalidate>
+        <!-- 1 -->
+        <div class="panel active" data-index="0" data-weight="rev">
+          <fieldset>
+            <legend>Frage 1</legend>
+            <p class="q"><strong>Ich würde jemanden einbuchten, wenn die Story gut klingt – auch wenn die Beweislage dünn sind.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 1">
+              <label class="opt"><input type="radio" name="q1" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q1" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q1" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 2 -->
+        <div class="panel" data-index="1" data-weight="pos">
+          <fieldset>
+            <legend>Frage 2</legend>
+            <p class="q"><strong>Wahrheit schlägt Bequemlichkeit: Ich korrigiere mich, wenn Fakten meine Meinung widerlegen.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 2">
+              <label class="opt"><input type="radio" name="q2" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q2" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q2" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 3 -->
+        <div class="panel" data-index="2" data-weight="rev">
+          <fieldset>
+            <legend>Frage 3</legend>
+            <p class="q"><strong>Bestechung? Ein schmaler Taler kurz vor dem Urteil klingt nach fairer Gegenleistung für meine Meinung.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 3">
+              <label class="opt"><input type="radio" name="q3" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q3" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q3" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 4 -->
+        <div class="panel" data-index="3" data-weight="pos">
+          <fieldset>
+            <legend>Frage 4</legend>
+            <p class="q"><strong>Wenn Beweise gewinnen, kann es sein dass ich im Unrecht bin – und das ist okay.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 4">
+              <label class="opt"><input type="radio" name="q4" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q4" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q4" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 5 -->
+        <div class="panel" data-index="4" data-weight="rev">
+          <fieldset>
+            <legend>Frage 5</legend>
+            <p class="q"><strong>Wenn alle „Schuldig!“ rufen, stimme ich aus Gruppengefühl zu – wer braucht schon Beweise.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 5">
+              <label class="opt"><input type="radio" name="q5" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q5" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q5" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 6 -->
+        <div class="panel" data-index="5" data-weight="pos">
+          <fieldset>
+            <legend>Frage 6</legend>
+            <p class="q"><strong>Gerüchte sind Unterhaltung, keine Beweise – ich frage nach Quellen.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 6">
+              <label class="opt"><input type="radio" name="q6" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q6" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q6" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 7 -->
+        <div class="panel" data-index="6" data-weight="rev">
+          <fieldset>
+            <legend>Frage 7</legend>
+            <p class="q"><strong>Ein süßer Hund als Zeuge macht Aussagen automatisch glaubwürdiger.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 7">
+              <label class="opt"><input type="radio" name="q7" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q7" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q7" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 8 -->
+        <div class="panel" data-index="7" data-weight="pos">
+          <fieldset>
+            <legend>Frage 8</legend>
+            <p class="q"><strong>Ich kann ruhig bleiben, ohne aus Spaß „Einspruch!“ zu rufen – meistens jedenfalls.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 8">
+              <label class="opt"><input type="radio" name="q8" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q8" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q8" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 9 -->
+        <div class="panel" data-index="8" data-weight="rev">
+          <fieldset>
+            <legend>Frage 9</legend>
+            <p class="q"><strong>Memes und Kommentare sind valide Beweismittel – das Internet lügt nie.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 9">
+              <label class="opt"><input type="radio" name="q9" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q9" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q9" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 10 -->
+        <div class="panel" data-index="9" data-weight="pos">
+          <fieldset>
+            <legend>Frage 10</legend>
+            <p class="q"><strong>Mein Bauchgefühl hat mich noch nie getäuscht, und den Nachbarn wollte ich schon länger mal loswerden - SCHULDIG.</strong></p>
+            <div class="options" role="radiogroup" aria-label="Frage 10">
+              <label class="opt"><input type="radio" name="q10" value="agree" required> Ich stimme zu</label>
+              <label class="opt"><input type="radio" name="q10" value="neutral"> Neutral</label>
+              <label class="opt"><input type="radio" name="q10" value="disagree"> Ich stimme nicht zu</label>
+            </div>
+          </fieldset>
         </div>
 
-        <div class="footer">
-          <p>Optional: Scanne den QR-Code (falls beigelegt) oder gib den Code oben auf der Geschenkkarte ein.</p>
-          <p class="small">Wenn du nicht weiterkommst: Der gesuchte Begriff ist ein zusammengesetztes Wort aus Recht und Abenteuer.</p>
+        <div class="nav" aria-label="Navigation">
+          <button id="prev" type="button" class="secondary" aria-label="Zurück">Zurück</button>
+          <div class="spacer"></div>
+          <button id="next" type="button" aria-label="Weiter">Weiter</button>
+        </div>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </form>
+
+      <!-- Ergebnisfelder -->
+      <div id="resultGood" class="result" aria-live="polite">
+        <h2>🎉 Herzlichen Glückwunsch!</h2>
+        <p>Hiermit sind Sie für eine <strong>Geschworenenverhandlung am 24.01.2026</strong> geladen.</p>
+        <p class="score">Score: <span id="scoreGood">—</span> / 20</p>
+        <div class="nav">
+          <div class="spacer"></div>
+          <button id="printInvite" type="button">Vorladung drucken</button>
         </div>
       </div>
-    </div>
-  </div>
+
+      <div id="resultBad" class="result bad" aria-live="polite">
+        <h2>😅 Danke für die Teilnahme!</h2>
+        <p>Leider lautet das Urteil: <strong>Sie sind absolut ungeeignet für den Job als Geschworene*r</strong>.</p>
+        <p class="score">Score: <span id="scoreBad">—</span> / 20</p>
+      </div>
+
+      <div class="footer">
+        <p class="small"></p>
+      </div>
+    </section>
+  </main>
 
   <script>
-    // Lösung: Wir akzeptieren mehrere Schreibweisen von 'jury experience'.
-    const acceptedSolutions = [
-      'juryexperience',
-      'juryexp',
-      'jury-experience', 'jury experience', 'juryexperience2025'
-    ];
+    const form = document.getElementById('quiz');
+    const panels = Array.from(form.querySelectorAll('.panel'));
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const statusEl = document.getElementById('status');
+    const good = document.getElementById('resultGood');
+    const bad = document.getElementById('resultBad');
+    const scoreGood = document.getElementById('scoreGood');
+    const scoreBad = document.getElementById('scoreBad');
+    const printInvite = document.getElementById('printInvite');
+    const bar = document.getElementById('bar');
+    const stepsEl = document.getElementById('steps');
 
-    // Easter Egg entsprechend der 3 Teile im Rätsel:
-    const easterEggs = ['freispruchaexp'];
+    let idx = 0;
 
-    const input = document.getElementById('answer');
-    const status = document.getElementById('status');
-    const success = document.getElementById('success');
-    const btn = document.getElementById('checkBtn');
-    const hintBtn = document.getElementById('hintBtn');
+    // Build step chips
+    stepsEl.innerHTML = panels.map((_,i)=>`<span class="chip" data-step="${i}">${i+1}/${panels.length}</span>`).join('');
 
-    function normalize(s) {
-      return (s || '')
-        .toLowerCase()
-        .replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/ü/g, 'u')
-        .replace(/\\s+/g, '')
-        .replace(/[-_]/g, '');
+    function updateProgress(){
+      const percent = Math.round((idx) / panels.length * 100);
+      bar.style.width = percent + '%';
+      const chips = stepsEl.querySelectorAll('.chip');
+      chips.forEach((c,i)=>{
+        c.classList.remove('active','done');
+        if(i < idx) c.classList.add('done');
+        if(i === idx) c.classList.add('active');
+      });
     }
 
-    function confetti() {
-      // leichte Konfetti-Animation ohne externe Bibliotheken
-      const count = 150;
-      for (let i = 0; i < count; i++) {
-        const span = document.createElement('span');
-        span.textContent = '•';
-        span.style.position = 'fixed';
-        span.style.left = Math.random() * 100 + 'vw';
-        span.style.top = '-5vh';
-        span.style.fontSize = (Math.random() * 18 + 10) + 'px';
-        span.style.color = Math.random() > 0.5 ? '#ffd166' : '#ef476f';
-        span.style.transition = 'transform 1.6s cubic-bezier(.2,.8,.2,1), opacity 1.8s';
-        document.body.appendChild(span);
-        const x = (Math.random() * 40 - 20);
-        const y = (Math.random() * 90 + 60);
-        setTimeout(() => {
-          span.style.transform = `translate(${x}vw, ${y}vh) rotate(${Math.random()*360}deg)`;
-          span.style.opacity = '0';
-        }, 10);
-        setTimeout(() => span.remove(), 2000);
+    function showPanel(i){
+      panels.forEach(p=>p.classList.remove('active'));
+      panels[i].classList.add('active');
+      prevBtn.disabled = i === 0;
+      nextBtn.textContent = (i === panels.length - 1) ? 'Ergebnis anzeigen' : 'Weiter';
+      nextBtn.disabled = !panelAnswered(i);
+      statusEl.textContent = '';
+      updateProgress();
+    }
+
+    function panelAnswered(i){
+      const name = panels[i].querySelector('input[type=radio]').name;
+      return !!form.querySelector(`input[name=${name}]:checked`);
+    }
+
+    function scoreValue(val, weight){
+      const mapPos = { agree:2, neutral:1, disagree:0 };
+      const mapRev = { agree:0, neutral:1, disagree:2 };
+      return (weight === 'rev' ? mapRev[val] : mapPos[val]);
+    }
+
+    function calculateScore(){
+      let score = 0;
+      panels.forEach(p => {
+        const weight = p.getAttribute('data-weight');
+        const name = p.querySelector('input[type=radio]').name;
+        const checked = form.querySelector(`input[name=${name}]:checked`);
+        const val = checked ? checked.value : null;
+        if(val){ score += scoreValue(val, weight); }
+      });
+      return score; // max 20
+    }
+
+    function showConfetti(){
+      const count = 160;
+      for(let i=0;i<count;i++){
+        const dot = document.createElement('span');
+        dot.textContent = '•';
+        dot.style.position = 'fixed';
+        dot.style.left = Math.random()*100 + 'vw';
+        dot.style.top = '-5vh';
+        dot.style.fontSize = (Math.random()*18+10) + 'px';
+        dot.style.color = Math.random()>0.5 ? '#ffd166' : '#0ea5e9';
+        dot.style.transition = 'transform 1.6s cubic-bezier(.2,.8,.2,1), opacity 1.8s';
+        document.body.appendChild(dot);
+        const x = (Math.random()*40-20);
+        const y = (Math.random()*90+60);
+        setTimeout(()=>{ dot.style.transform = `translate(${x}vw, ${y}vh) rotate(${Math.random()*360}deg)`; dot.style.opacity='0'; },10);
+        setTimeout(()=> dot.remove(), 2000);
       }
     }
 
-    btn.addEventListener('click', () => {
-      const value = normalize(input.value);
-      if (!value) {
-        status.textContent = 'Bitte gib eine Lösung ein.';
-        status.className = 'status hint';
+    // Event handlers
+    panels.forEach((p,i)=>{
+      const radios = p.querySelectorAll('input[type=radio]');
+      radios.forEach(r => r.addEventListener('change', ()=>{
+        if(i === idx){ nextBtn.disabled = false; }
+      }));
+    });
+
+    prevBtn.addEventListener('click', ()=>{
+      if(idx > 0){ idx--; showPanel(idx); }
+    });
+
+    nextBtn.addEventListener('click', ()=>{
+      if(!panelAnswered(idx)){
+        statusEl.textContent = 'Bitte wähle eine Option, bevor du weitergehst.';
+        statusEl.style.color = getComputedStyle(document.documentElement).getPropertyValue('--warn') || '#ef476f';
         return;
       }
-      if (acceptedSolutions.includes(value)) {
-        status.textContent = 'Richtig! Einladung freigeschaltet.';
-        status.className = 'status';
-        success.style.display = 'block';
-        confetti();
-      } else if (easterEggs.includes(value)) {
-        status.textContent = 'Interessant – du hast den alternativen Schlüssel gefunden!';
-        status.className = 'status';
-        success.style.display = 'block';
-        confetti();
+      if(idx < panels.length - 1){
+        idx++; showPanel(idx);
       } else {
-        status.textContent = 'Nicht ganz. Tipp: Denke an Recht & Erlebnis.';
-        status.className = 'status hint';
+        // compute result
+        const score = calculateScore();
+        const threshold = 14; // >= geeignet
+        if(score >= threshold){
+          scoreGood.textContent = `${score}`;
+          good.style.display = 'block';
+          bad.style.display = 'none';
+          showConfetti();
+        } else {
+          scoreBad.textContent = `${score}`;
+          bad.style.display = 'block';
+          good.style.display = 'none';
+        }
+        // hide the form nav
+        form.style.display = 'none';
       }
     });
 
-    hintBtn.addEventListener('click', () => {
-      status.innerHTML = 'Hinweis: <span class="mono">jury</span> + <span class="mono">experience</span> (engl.).';
-      status.className = 'status';
+    // Keyboard: allow ArrowLeft/ArrowRight
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'ArrowRight' && !nextBtn.disabled) nextBtn.click();
+      if(e.key === 'ArrowLeft' && !prevBtn.disabled) prevBtn.click();
     });
 
-    // Enter-Taste erlaubt
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') btn.click();
-    });
+    printInvite.addEventListener('click', () => { window.print(); });
+
+    // Init
+    showPanel(idx);
   </script>
-</</body>
+</body>
+</html>
+
