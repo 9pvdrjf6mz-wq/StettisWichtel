@@ -201,28 +201,39 @@
       </form>
 
 <!-- Ergebnisfelder -->
-    <div id="resultGood" class="result" aria-live="polite">
-      <h2>🎉 Herzlichen Glückwunsch!</h2>
-      <p>Hiermit sind Sie für eine <strong>Geschworenenverhandlung am 24.01.2026</strong> geladen.</p>
-      <p class="score">Score: <span id="scoreGood">—</span> / 20</p>
-      <div class="nav">
-        <div class="spacer"></div>
-        <button id="printInvite" type="button">Vorladung drucken</button>
-        <!-- Link erscheint nur nach Bestehen (im Erfolgsbereich) -->
-        
-        <button id="printInvite" type="button" onclick="window.open('https://www.stettiswichtel.de/v', '_blank')">
-          Zum Geschenk
-        </button>
+<div id="resultGood" class="result" aria-live="polite">
+  <h2>🎉 Herzlichen Glückwunsch!</h2>
+  <p>Hiermit sind Sie für eine <strong>Geschworenenverhandlung am 24.01.2026</strong> geladen.</p>
+  <p class="score">Score: <span id="scoreGood">—</span> / 20</p>
+  <div class="nav">
+    <div class="spacer"></div>
 
-      </div>
-    </div>
+    <!-- Button 1: Drucken -->
+    <button id="printInvite" type="button">
+      Vorladung drucken
+    </button>
 
-    <div id="resultBad" class="result bad" aria-live="polite">
-      <h3>😅 Danke für die Teilnahme!</h3>
-      <p>Leider lautet das Urteil: Sie sind absolut ungeeignet für den Job als Geschworene*r.</p>
-      <p class="score">Score: <span id="scoreBad">—</span> / 20</p>
-    </div>
+    <!-- Button 2: Zum Geschenk (gleiches Styling, andere Funktion) -->
+    <button id="giftButton" type="button" onclick="window.open('https://www.stettiswichtel.de/v', '_blank')">
+      Zum Geschenk
+    </button>
+
   </div>
+</div>
+
+<div id="resultBad" class="result bad" aria-live="polite">
+  <h3>😅 Danke für die Teilnahme!</h3>
+  <p>Leider lautet das Urteil: Sie sind absolut ungeeignet für den Job als Geschworene*r.</p>
+  <p class="score">Score: <span id="scoreBad">—</span> / 20</p>
+</div>
+
+<script>
+  // Falls du schon eine Print-Funktion hast, hier nur Beispiel:
+  document.getElementById('printInvite').addEventListener('click', function () {
+    window.print();
+  });
+</script>
+
 
 
   <script>
@@ -359,6 +370,7 @@
   </script>
 </body>
 </html>
+
 
 
 
