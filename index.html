@@ -200,35 +200,26 @@
         <div id="status" class="status" role="status" aria-live="polite"></div>
       </form>
 
-      <!-- Ergebnisfelder -->
-      <div id="resultGood" class="result" aria-live="polite">
-        <h2>🎉 Herzlichen Glückwunsch!</h2>
-        <p>Hiermit sind Sie für eine <strong>Geschworenenverhandlung am 24.01.2026</strong> geladen.</p>
-        <p class="score">Score: <span id="scoreGood">—</span> / 20</p>
-        <div class="nav">
-          <div class="spacer"></div>
-           <!-- Hier der neue Link -->
-    <a href="https://www.stettiswichtel.de/v" target="_blank" class="link-button
-
-          <button id="printInvite" type="button">Vorladung drucken</button>
-        </div>
+<!-- Ergebnisfelder -->
+    <div id="resultGood" class="result" aria-live="polite">
+      <h2>🎉 Herzlichen Glückwunsch!</h2>
+      <p>Hiermit sind Sie für eine <strong>Geschworenenverhandlung am 24.01.2026</strong> geladen.</p>
+      <p class="score">Score: <span id="scoreGood">—</span> / 20</p>
+      <div class="nav">
+        <div class="spacer"></div>
+        <button id="printInvite" type="button">Vorladung drucken</button>
+        <!-- Link erscheint nur nach Bestehen (im Erfolgsbereich) -->
+        <a href="https://www.stettiswichtel.de" target="_blank" class="link-button" aria-label="Zur Spaß-Seite stettiswichtel.de">Zur Spaß-Seite</a>
       </div>
+    </div>
 
-      <div id="resultBad" class="result bad" aria-live="polite">
-        <h2>😅 Danke für die Teilnahme!</h2>
-        <p>Leider lautet das Urteil: <strong>Sie sind absolut ungeeignet für den Job als Geschworene*r</strong>.</p>
-        <p class="score">Score: <span id="scoreBad">—</span> / 20</p>
-        
-    <!-- Hier der neue Link -->
-    <a href="https://www.stettiswichtel.de" target="_blank" class="link-button
+    <div id="resultBad" class="result bad" aria-live="polite">
+      <h3>😅 Danke für die Teilnahme!</h3>
+      <p>Leider lautet das Urteil: Sie sind absolut ungeeignet für den Job als Geschworene*r.</p>
+      <p class="score">Score: <span id="scoreBad">—</span> / 20</p>
+    </div>
+  </div>
 
-      </div>
-
-      <div class="footer">
-        <p class="small"></p>
-      </div>
-    </section>
-  </main>
 
   <script>
     const form = document.getElementById('quiz');
@@ -364,6 +355,7 @@
   </script>
 </body>
 </html>
+
 
 
 
